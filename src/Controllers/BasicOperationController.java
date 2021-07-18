@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.BasicOperationModel;
+import Views.BasicOperationLeftContainer;
 import Views.BasicOperationView;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class BasicOperationController {
     private BasicOperationModel basicOperationModel;
-    protected BasicOperationView basicOperationView;
+    protected BasicOperationLeftContainer basicOperationLeftContainerView;
 
     // Operation and functionalities
     private Arithmetic arithmetic = new Arithmetic();
@@ -18,17 +19,135 @@ public class BasicOperationController {
     private StorageConverter storageConverter = new StorageConverter();
     private Trigonometric trigonometric = new Trigonometric();
 
+    // Answer Holders
+
     public BasicOperationController(BasicOperationModel _basicOperationModel, BasicOperationView _basicOperationView) {
         basicOperationModel = _basicOperationModel;
-        basicOperationView = _basicOperationView;
+        basicOperationLeftContainerView = _basicOperationView.basicOperationLeftContainer;
+
+        basicOperationLeftContainerView.addPlusButtonHandler(new PlusButtonHandler());
+        basicOperationLeftContainerView.addMinusBtnHandler(new MinusButtonHandler());
+        basicOperationLeftContainerView.addEqualButtonHandler(new EqualButtonHandler());
+    }
+
+    class EqualButtonHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String basicArithmeticOperation = basicOperationLeftContainerView.getBasicArithmeticOperation();
+            String basicArithmeticResult = basicOperationLeftContainerView.getBasicArithmeticResult();
+            String basicArithmeticResultHolder = basicOperationLeftContainerView.getBasicArithmeticResultHolder();
+
+            if (basicArithmeticOperation.length() == 0) {
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResult + " =");
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                return;
+            }
+
+            String operation = basicArithmeticOperation.substring(basicArithmeticOperation.length() - 1);
+
+            String basicArithmeticOperationSubstring = basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 2);
+
+            switch (operation) {
+                case "+":
+                    basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperation + " " + basicArithmeticResultHolder + " =");
+                    basicArithmeticOperation = basicArithmeticOperationSubstring;
+                    int sumResult = arithmetic.sum(Integer.parseInt(basicArithmeticOperation), Integer.parseInt(basicArithmeticResultHolder));
+                    basicOperationLeftContainerView.setBasicArithmeticResult(Integer.toString(sumResult));
+                    basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                    break;
+                case "-":
+                    basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperation + " " + basicArithmeticResultHolder + " =");
+                    basicArithmeticOperation = basicArithmeticOperationSubstring;
+                    int minusResult = arithmetic.minus(Integer.parseInt(basicArithmeticOperation), Integer.parseInt(basicArithmeticResultHolder));
+                    basicOperationLeftContainerView.setBasicArithmeticResult(Integer.toString(minusResult));
+                    basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                    break;
+                case "*":
+                    break;
+                case "/":
+                    break;
+                default:
+                    basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResult + " =");
+                    basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+            }
+        }
     }
 
     class PlusButtonHandler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            String basicArithmeticOperation = basicOperationLeftContainerView.getBasicArithmeticOperation();
+            String basicArithmeticResult = basicOperationLeftContainerView.getBasicArithmeticResult();
+            String basicArithmeticResultHolder = basicOperationLeftContainerView.getBasicArithmeticResultHolder();
 
+            if (basicArithmeticOperation.length() == 0) {
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResultHolder + " +");
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                return;
+            }
+
+            if (checkEqualSign(basicArithmeticOperation)) {
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResult + " +");
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                return;
+            }
+
+            if (basicArithmeticResultHolder.equals("0")) {
+                return;
+            }
+
+            String result = Integer.toString(arithmetic.sum(Integer.parseInt(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 2)), Integer.parseInt(basicArithmeticResultHolder)));
+            basicOperationLeftContainerView.setBasicArithmeticResult(result);
+            result = result.concat(" +");
+            basicOperationLeftContainerView.setBasicArithmeticOperation(result);
+
+            basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+
+            System.out.println(basicOperationLeftContainerView.getBasicArithmeticResultHolder());
         }
+    }
+
+    class MinusButtonHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String basicArithmeticOperation = basicOperationLeftContainerView.getBasicArithmeticOperation();
+            String basicArithmeticResult = basicOperationLeftContainerView.getBasicArithmeticResult();
+            String basicArithmeticResultHolder = basicOperationLeftContainerView.getBasicArithmeticResultHolder();
+
+            if (basicArithmeticOperation.length() == 0) {
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResultHolder + " -");
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                return;
+            }
+
+            if (checkEqualSign(basicArithmeticOperation)) {
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResult + " -");
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+                return;
+            }
+
+            if (basicArithmeticResultHolder.equals("0")) {
+                return;
+            }
+
+            String result = Integer.toString(arithmetic.minus(Integer.parseInt(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 2)), Integer.parseInt(basicArithmeticResultHolder)));
+            basicOperationLeftContainerView.setBasicArithmeticResult(result);
+            result = result.concat(" -");
+            basicOperationLeftContainerView.setBasicArithmeticOperation(result);
+
+            basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
+
+            System.out.println(basicOperationLeftContainerView.getBasicArithmeticResultHolder());
+        }
+    }
+
+    // check for equal sign
+    public boolean checkEqualSign(String input) {
+        String sign = input.substring(input.length() - 1);
+        return sign.equals("=");
     }
 }
 
