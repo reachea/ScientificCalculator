@@ -47,18 +47,21 @@ public class MainWindow extends JFrame{
 
         // Panel container for the right side
         rightPanel = new JPanel();
-        rightPanel.setLayout(new GridLayout(2, 1, 0, 18));
+        rightPanel.setLayout(new BorderLayout());
         rightPanel.setBackground(new Color(2, 32, 60));
 
         // Panel container for the top right side
         topRightPanel = new JPanel();
+        topRightPanel.setBorder(BorderFactory.createMatteBorder(0, 12, 8, 12, new Color(2, 32, 60)));
+        topRightPanel.setPreferredSize(new Dimension(0, 200));
         topRightPanel.setBackground(panelBackgroundColor);
 
         // Panel container for the bottom right side
         bottomRightPanel = new JPanel();
+        bottomRightPanel.setBorder(BorderFactory.createMatteBorder(8, 12, 0, 12, new Color(2, 32, 60)));
         bottomRightPanel.setBackground(panelBackgroundColor);
 
         rightPanel.add(topRightPanel, BorderLayout.NORTH);
-        rightPanel.add(bottomRightPanel, BorderLayout.SOUTH);
+        rightPanel.add(bottomRightPanel, BorderLayout.CENTER);
     }
 }

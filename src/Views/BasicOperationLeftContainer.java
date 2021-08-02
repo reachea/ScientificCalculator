@@ -486,10 +486,11 @@ public class BasicOperationLeftContainer extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String oldResult = basicArithmeticResultHolder;
-            String sign = basicArithmeticOperation.getText().substring(basicArithmeticOperation.getText().length() - 1);
+            String sign = "";
 
-
-            System.out.println(sign);
+            if (basicArithmeticOperation.getText().length() > 0) {
+                sign = basicArithmeticOperation.getText().substring(basicArithmeticOperation.getText().length() - 1);
+            }
 
             if (sign.equals("=")) {
                 basicArithmeticOperation.setText("");
@@ -501,13 +502,13 @@ public class BasicOperationLeftContainer extends JPanel {
                 return;
             }
 
-            oldResult = oldResult.substring(0, oldResult.length() - 1);
-
             if (oldResult.length() == 0) {
                 basicArithmeticResultHolder = "0";
                 basicArithmeticResult.setText(basicArithmeticResultHolder);
                 return;
             }
+
+            oldResult = oldResult.substring(0, oldResult.length() - 1);
 
             basicArithmeticResultHolder = oldResult;
             basicArithmeticResult.setText(basicArithmeticResultHolder);
