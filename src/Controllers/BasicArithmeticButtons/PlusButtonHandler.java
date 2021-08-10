@@ -1,7 +1,7 @@
 package Controllers.BasicArithmeticButtons;
 
 import Controllers.BasicOperation.Arithmetic;
-import Views.BasicOperationLeftContainer;
+import Views.BasicOperationContainer.BasicOperationLeftContainer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +37,7 @@ public class PlusButtonHandler implements ActionListener {
             return;
         }
 
-        String result = Integer.toString(arithmetic.sum(Integer.parseInt(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 6)), Integer.parseInt(basicArithmeticResultHolder)));
+        String result = Double.toString(arithmetic.sum(Double.parseDouble(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 6)), Double.parseDouble(basicArithmeticResultHolder)));
         basicOperationLeftContainerView.setBasicArithmeticResult(result);
         result = result.concat(" +");
         basicOperationLeftContainerView.setBasicArithmeticOperation(result + " ...");

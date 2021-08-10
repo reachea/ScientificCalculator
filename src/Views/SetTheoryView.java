@@ -1,15 +1,8 @@
 package Views;
 
+import Views.SetTheoryContainer.*;
+
 public class SetTheoryView {
-    private String setOperationResult;
-
-    public boolean setSetOperationResult(String result) {
-        this.setOperationResult = result;
-
-        return true;
-    }
-
-    public String getSetOperationResult() {
-        return this.setOperationResult;
-    }
+    public SetTheoryLeftContainer setTheoryLeftContainer = new SetTheoryLeftContainer();
+    public SetTheoryBottomRightContainer setTheoryBottomRightContainer = new SetTheoryBottomRightContainer();
 }

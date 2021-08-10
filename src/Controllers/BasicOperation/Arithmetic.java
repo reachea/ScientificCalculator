@@ -11,7 +11,7 @@ public class Arithmetic {
      * @param b the second argument for sum operation
      * @return the result from sum operation
      */
-    public int sum(int a, int b) {
+    public double sum(double a, double b) {
         return (a+b);
     };
 
@@ -21,7 +21,7 @@ public class Arithmetic {
      * @param b the second argument for minus operation
      * @return the result from minus operation
      */
-    public int minus(int a, int b) {
+    public double minus(double a, double b) {
         return (a-b);
     }
 
@@ -31,7 +31,7 @@ public class Arithmetic {
      * @param b the second argument for multiply operation
      * @return the result from multiply operation
      */
-    public int multiply(int a, int b) {
+    public double multiply(double a, double b) {
         return (a*b);
     }
 
@@ -41,7 +41,7 @@ public class Arithmetic {
      * @param b the second argument for divide operation
      * @return the result from divide operation
      */
-    public double divide(int a, int b) {
+    public double divide(double a, double b) {
         return ((double) a/b);
     }
 
@@ -51,7 +51,7 @@ public class Arithmetic {
      * @param b the second argument for modulo operation
      * @return the result from modulo operation
      */
-    public int modulo(int a, int b) {
+    public double modulo(double a, double b) {
         return (a%b);
     }
 }

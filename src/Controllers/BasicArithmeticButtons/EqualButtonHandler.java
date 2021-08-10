@@ -1,7 +1,7 @@
 package Controllers.BasicArithmeticButtons;
 
 import Controllers.BasicOperation.Arithmetic;
-import Views.BasicOperationLeftContainer;
+import Views.BasicOperationContainer.BasicOperationLeftContainer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,24 +35,36 @@ public class EqualButtonHandler implements ActionListener {
             basicArithmeticOperationSubstring = basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 6);
         }
 
+        String basicArithmeticOperationOutput = basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 4) + " " + basicArithmeticResultHolder + " =";
+
         switch (operation) {
             case "+":
-                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 4) + " " + basicArithmeticResultHolder + " =");
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperationOutput);
                 basicArithmeticOperation = basicArithmeticOperationSubstring;
-                int sumResult = arithmetic.sum(Integer.parseInt(basicArithmeticOperation), Integer.parseInt(basicArithmeticResultHolder));
-                basicOperationLeftContainerView.setBasicArithmeticResult(Integer.toString(sumResult));
+                double sumResult = arithmetic.sum(Double.parseDouble(basicArithmeticOperation), Double.parseDouble(basicArithmeticResultHolder));
+                basicOperationLeftContainerView.setBasicArithmeticResult(Double.toString(sumResult));
                 basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
                 break;
             case "-":
-                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperation.substring(0, basicArithmeticOperation.length() - 4) + " " + basicArithmeticResultHolder + " =");
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperationOutput);
                 basicArithmeticOperation = basicArithmeticOperationSubstring;
-                int minusResult = arithmetic.minus(Integer.parseInt(basicArithmeticOperation), Integer.parseInt(basicArithmeticResultHolder));
-                basicOperationLeftContainerView.setBasicArithmeticResult(Integer.toString(minusResult));
+                double minusResult = arithmetic.minus(Double.parseDouble(basicArithmeticOperation), Double.parseDouble(basicArithmeticResultHolder));
+                basicOperationLeftContainerView.setBasicArithmeticResult(Double.toString(minusResult));
                 basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
                 break;
             case "*":
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperationOutput);
+                basicArithmeticOperation = basicArithmeticOperationSubstring;
+                double multiplyResult = arithmetic.multiply(Double.parseDouble(basicArithmeticOperation), Double.parseDouble(basicArithmeticResultHolder));
+                basicOperationLeftContainerView.setBasicArithmeticResult(Double.toString(multiplyResult));
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
                 break;
             case "/":
+                basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticOperationOutput);
+                basicArithmeticOperation = basicArithmeticOperationSubstring;
+                double divideResult = arithmetic.divide(Double.parseDouble(basicArithmeticOperation), Double.parseDouble(basicArithmeticResultHolder));
+                basicOperationLeftContainerView.setBasicArithmeticResult(Double.toString(divideResult));
+                basicOperationLeftContainerView.setBasicArithmeticResultHolder("0");
                 break;
             default:
                 basicOperationLeftContainerView.setBasicArithmeticOperation(basicArithmeticResult + " =");
