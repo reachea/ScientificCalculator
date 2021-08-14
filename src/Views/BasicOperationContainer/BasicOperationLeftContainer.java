@@ -13,6 +13,7 @@ public class BasicOperationLeftContainer extends JPanel {
     protected Color panelBackgroundColor = new Color(0, 21, 40);
     protected Color screenBackgroundColor = new Color(2, 32, 60);
     protected Color textColor = new Color(228, 228, 228);
+    protected Color displayColor = new Color(67, 82, 109);
 
     // Layouts
     protected JPanel buttonContainer;
@@ -208,7 +209,7 @@ public class BasicOperationLeftContainer extends JPanel {
         basicArithmeticOperation.setBackground(new Color(67, 82, 109));
         basicArithmeticOperation.setHorizontalAlignment(JTextField.RIGHT);
         basicArithmeticOperation.setEditable(false);
-        basicArithmeticOperation.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 8, new Color(67, 82, 109)));
+        basicArithmeticOperation.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 8, displayColor));
         basicArithmeticOperation.setFont(new Font("Montserrat", Font.PLAIN, 18));
 
         basicArithmeticResult = new JTextField(10);

@@ -58,23 +58,20 @@ public class MainWindow extends JFrame{
         createMenu();
         createLayout();
 
-        Color backgroundColor = new Color(2, 32, 60);
-
         basicOperationController = new BasicOperationController(basicOperationModel, basicOperationView);
         numberSystemController = new NumberSystemController(numberSystemModel, numberSystemView);
         setTheoryController = new SetTheoryController(setTheoryModel, setTheoryView);
 
 //        this.setLayout(new GridLayout(1, 2, 14, 0));
         this.setLayout(new BorderLayout());
-        this.getRootPane().setBorder(BorderFactory.createMatteBorder(12, 12, 12, 12, backgroundColor));
-        this.getContentPane().setBackground(backgroundColor);
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(12, 12, 12, 12, screenBackgroundColor));
+        this.getRootPane().setBackground(screenBackgroundColor);
+        this.getContentPane().setBackground(screenBackgroundColor);
         this.add(leftPanel, BorderLayout.WEST);
         this.add(rightPanel, BorderLayout.CENTER);
     }
 
     private void createLayout() {
-        Color panelBackgroundColor = new Color(0, 21, 40);
-
         // Panel for the left side
         leftPanel = new JPanel(new BorderLayout());
         leftPanel.setBackground(panelBackgroundColor);
@@ -84,9 +81,9 @@ public class MainWindow extends JFrame{
 
 
         // Panel container for the right side
-        rightPanel = new JPanel();
+        rightPanel = new JPanel(new BorderLayout());
         rightPanel.setLayout(new BorderLayout());
-        rightPanel.setBackground(new Color(2, 32, 60));
+        rightPanel.setBackground(panelBackgroundColor);
 
         // Panel container for the top right side
         topRightPanel = new JPanel(new BorderLayout());
@@ -118,48 +115,51 @@ public class MainWindow extends JFrame{
         menuLabel.setBorder(new CompoundBorder(new EmptyBorder(20, 20, 20, 0), menuLabel.getBorder()));
         menuLabel.setOpaque(true);
 
-        menuButtonContainer = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        menuButtonContainer = new JPanel();
+        menuButtonContainer.setBorder(new EmptyBorder(30, 0, 0, 0));
+        menuButtonContainer.setBackground(panelBackgroundColor);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
         basicArithmeticBtn = new JButton("+");
         basicArithmeticBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leftPanel.removeAll();
                 leftPanel.add(basicOperationView.basicOperationLeftContainer);
+                bottomRightPanel.removeAll();
+                bottomRightPanel.add(basicOperationView.basicOperationBottomRightContainer);
                 revalidate();
                 repaint();
             }
         });
-        menuButtonContainer.add(basicArithmeticBtn, gbc);
+        menuButtonContainer.add(basicArithmeticBtn);
 
-        gbc.gridx = 1;
         numberSystemBtn = new JButton("1");
         numberSystemBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leftPanel.removeAll();
                 leftPanel.add(numberSystemView.numberSystemLeftContainer);
+                bottomRightPanel.removeAll();
+                bottomRightPanel.add(numberSystemView.numberSystemBottomRightContainer);
                 revalidate();
                 repaint();
             }
         });
-        menuButtonContainer.add(numberSystemBtn, gbc);
+        menuButtonContainer.add(numberSystemBtn);
 
-        gbc.gridx = 2;
         setTheoryBtn = new JButton("{}");
         setTheoryBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 leftPanel.removeAll();
                 leftPanel.add(setTheoryView.setTheoryLeftContainer);
+                bottomRightPanel.removeAll();
+                bottomRightPanel.add(setTheoryView.setTheoryBottomRightContainer);
                 revalidate();
                 repaint();
             }
         });
-        menuButtonContainer.add(setTheoryBtn, gbc);
+        menuButtonContainer.add(setTheoryBtn);
 
         menuContainer.add(menuButtonContainer, BorderLayout.CENTER);
         menuContainer.add(menuLabel, BorderLayout.NORTH);
