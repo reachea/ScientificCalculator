@@ -48,7 +48,7 @@ public class NumberSystemBottomRightContainer extends JPanel {
     }
 
     public void createLayout() {
-        numberSystemRightContainer = new JPanel(new GridLayout(2, 1));
+        numberSystemRightContainer = new JPanel(new BorderLayout(0, 10));
         numberSystemRightContainer.setBackground(panelBackgroundColor);
 
         // Top Half related
@@ -61,9 +61,9 @@ public class NumberSystemBottomRightContainer extends JPanel {
         topHalfTitle.setForeground(textColor);
         topHalfTitle.setBackground(panelBackgroundColor);
 
-        topHalfBody = new JPanel(new GridLayout(2, 1, 0, 10));
+        topHalfBody = new JPanel(new GridLayout(2, 1, 0, 20));
         topHalfBody.setBackground(panelBackgroundColor);
-        topHalfBody.setBorder(BorderFactory.createMatteBorder(20, 0, 80, 0, panelBackgroundColor));
+        topHalfBody.setBorder(BorderFactory.createMatteBorder(20, 0, 0, 0, panelBackgroundColor));
 
         topHalfFirstRow = new JPanel();
         topHalfFirstRow.setLayout(new BoxLayout(topHalfFirstRow, BoxLayout.LINE_AXIS));
@@ -117,7 +117,7 @@ public class NumberSystemBottomRightContainer extends JPanel {
         // Bottom Half related
         bottomHalfContainer = new JPanel(new BorderLayout(0, 10));
         bottomHalfContainer.setBackground(panelBackgroundColor);
-        bottomHalfContainer.setBorder(BorderFactory.createMatteBorder(30, 20, 20, 20, panelBackgroundColor));
+        bottomHalfContainer.setBorder(BorderFactory.createMatteBorder(10, 40, 40, 40, panelBackgroundColor));
 
         binaryBtnContainer = new JPanel();
         binaryBtnContainer.setLayout(new BoxLayout(binaryBtnContainer, BoxLayout.LINE_AXIS));
@@ -134,8 +134,8 @@ public class NumberSystemBottomRightContainer extends JPanel {
         binaryFirstComplementBtn = new JButton("1's");
         binaryFirstComplementBtn.setFont(mainFont);
 
+        binaryBtnContainer.add(Box.createHorizontalGlue());
         binaryBtnContainer.add(binarySumBtn);
-        binaryBtnContainer.add(binaryMinusBtn);
         binaryBtnContainer.add(Box.createRigidArea(new Dimension(10, 0)));
         binaryBtnContainer.add(binaryMinusBtn);
         binaryBtnContainer.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -144,6 +144,7 @@ public class NumberSystemBottomRightContainer extends JPanel {
         binaryBtnContainer.add(binaryDivideBtn);
         binaryBtnContainer.add(Box.createRigidArea(new Dimension(10, 0)));
         binaryBtnContainer.add(binaryFirstComplementBtn);
+        binaryBtnContainer.add(Box.createHorizontalGlue());
 
         binaryOutput = new JTextField("");
         binaryOutput.setFont(mainFont);
@@ -154,7 +155,7 @@ public class NumberSystemBottomRightContainer extends JPanel {
         bottomHalfContainer.add(binaryBtnContainer, BorderLayout.NORTH);
         bottomHalfContainer.add(binaryOutput, BorderLayout.CENTER);
 
-        numberSystemRightContainer.add(topHalfContainer);
-        numberSystemRightContainer.add(bottomHalfContainer);
+        numberSystemRightContainer.add(topHalfContainer, BorderLayout.NORTH);
+        numberSystemRightContainer.add(bottomHalfContainer, BorderLayout.CENTER);
     }
 }

@@ -31,7 +31,7 @@ public class NumberSystemLeftContainer extends JPanel {
     JButton numberSystemResetBtn;
     JButton numberSystemSwapBtn;
     JLabel numberSystemResult;
-    JTextField numberSystemOutput;
+    JTextArea numberSystemOutput;
 
     public NumberSystemLeftContainer() {
         this.setLayout(new BorderLayout());
@@ -47,38 +47,51 @@ public class NumberSystemLeftContainer extends JPanel {
 
     public void createLayout() {
         numberSystemBody = new JPanel();
-        numberSystemBody.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        numberSystemBody.setLayout(new BoxLayout(numberSystemBody, BoxLayout.Y_AXIS));
         numberSystemBody.setBackground(panelBackgroundColor);
+        numberSystemBody.setBorder(new EmptyBorder(0, 10, 30, 10));
 
         numberSystemInputTitle = new JLabel("Enter Number");
         numberSystemInputTitle.setFont(mainFont);
+        numberSystemInputTitle.setPreferredSize(new Dimension(480, 40));
+        numberSystemInputTitle.setMaximumSize(numberSystemInputTitle.getPreferredSize());
+        numberSystemInputTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         numberSystemInputTitle.setForeground(textColor);
-        numberSystemInputTitle.setBorder(new EmptyBorder(25, 0, 5, 0));
 
         numberSystemInput = new JTextField();
         numberSystemInput.setFont(mainFont);
         numberSystemInput.setForeground(textColor);
+        numberSystemInput.setPreferredSize(new Dimension(480, 40));
+        numberSystemInput.setMaximumSize(numberSystemInput.getPreferredSize());
         numberSystemInput.setBackground(panelBackgroundColor);
 
         numberSystemFromTitle = new JLabel("From Base");
         numberSystemFromTitle.setFont(mainFont);
+        numberSystemFromTitle.setPreferredSize(new Dimension(480, 40));
+        numberSystemFromTitle.setMaximumSize(numberSystemFromTitle.getPreferredSize());
+        numberSystemFromTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         numberSystemFromTitle.setForeground(textColor);
-        numberSystemFromTitle.setBorder(new EmptyBorder(25, 0, 5, 0));
 
         String[] numberSystemField = {"Binary", "Octal", "Decimal", "Hexadecimal"};
 
         numberSystemFrom = new JComboBox(numberSystemField);
+        numberSystemFrom.setFont(mainFont);
+        numberSystemFrom.setPreferredSize(new Dimension(480, 40));
+        numberSystemFrom.setMaximumSize(numberSystemFrom.getPreferredSize());
 
         numberSystemToTitle = new JLabel("To Base");
         numberSystemToTitle.setFont(mainFont);
         numberSystemToTitle.setForeground(textColor);
-        numberSystemToTitle.setBorder(new EmptyBorder(25, 0, 5, 0));
+        numberSystemToTitle.setPreferredSize(new Dimension(480, 40));
+        numberSystemToTitle.setMaximumSize(numberSystemToTitle.getPreferredSize());
+        numberSystemToTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         numberSystemTo = new JComboBox(numberSystemField);
+        numberSystemTo.setFont(mainFont);
+        numberSystemTo.setPreferredSize(new Dimension(480, 40));
+        numberSystemTo.setMaximumSize(numberSystemTo.getPreferredSize());
 
         btnContainer = new JPanel(new FlowLayout());
-        btnContainer.setBorder(new EmptyBorder(25, 0, 5, 0));
         btnContainer.setBackground(panelBackgroundColor);
 
         numberSystemConvertBtn = new JButton("= Convert");
@@ -93,41 +106,32 @@ public class NumberSystemLeftContainer extends JPanel {
 
         numberSystemResult = new JLabel("Result Number");
         numberSystemResult.setFont(mainFont);
+        numberSystemResult.setPreferredSize(new Dimension(480, 40));
+        numberSystemResult.setMaximumSize(numberSystemResult.getPreferredSize());
+        numberSystemResult.setAlignmentX(Component.CENTER_ALIGNMENT);
         numberSystemResult.setForeground(textColor);
-        numberSystemResult.setBorder(new EmptyBorder(25, 0, 5, 0));
 
-        numberSystemOutput = new JTextField();
+        numberSystemOutput = new JTextArea();
+        numberSystemOutput.setBackground(displayColor);
+        numberSystemOutput.setFont(mainFont);
+        numberSystemOutput.setForeground(textColor);
+        numberSystemOutput.setBorder(new EmptyBorder(10, 20, 10, 20));
+        numberSystemOutput.setEditable(false);
 
-        gbc.gridy = 0;
-        gbc.gridx = 0;
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.anchor = GridBagConstraints.NORTHWEST;
-        numberSystemBody.setBorder(BorderFactory.createLineBorder(Color.RED));
-        numberSystemBody.add(numberSystemInputTitle, gbc);
-
-        gbc.gridy = 1;
-        numberSystemBody.add(numberSystemInput, gbc);
-
-        gbc.gridy = 2;
-        numberSystemBody.add(numberSystemFromTitle, gbc);
-
-        gbc.gridy = 3;
-        numberSystemBody.add(numberSystemFrom, gbc);
-
-        gbc.gridy = 4;
-        numberSystemBody.add(numberSystemToTitle, gbc);
-
-        gbc.gridy = 5;
-        numberSystemBody.add(numberSystemTo, gbc);
-
-        gbc.gridy = 6;
-        numberSystemBody.add(btnContainer, gbc);
-
-        gbc.gridy = 7;
-        numberSystemBody.add(numberSystemResult, gbc);
-
-        gbc.gridy = 8;
-        numberSystemBody.add(numberSystemOutput, gbc);
+        numberSystemBody.add(Box.createRigidArea(new Dimension(0, 20)));
+        numberSystemBody.add(numberSystemInputTitle);
+        numberSystemBody.add(numberSystemInput);
+        numberSystemBody.add(Box.createRigidArea(new Dimension(0, 10)));
+        numberSystemBody.add(numberSystemFromTitle);
+        numberSystemBody.add(numberSystemFrom);
+        numberSystemBody.add(Box.createRigidArea(new Dimension(0, 10)));
+        numberSystemBody.add(numberSystemToTitle);
+        numberSystemBody.add(numberSystemTo);
+        numberSystemBody.add(Box.createRigidArea(new Dimension(0, 30)));
+        numberSystemBody.add(btnContainer);
+        numberSystemBody.add(Box.createRigidArea(new Dimension(0, 10)));
+        numberSystemBody.add(numberSystemResult);
+        numberSystemBody.add(numberSystemOutput);
     }
 
     public void createTitle() {

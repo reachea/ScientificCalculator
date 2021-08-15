@@ -45,38 +45,56 @@ public class SetTheoryLeftContainer extends JPanel {
         setTheoryContainer = new JPanel();
         setTheoryContainer.setLayout(new BoxLayout(setTheoryContainer, BoxLayout.Y_AXIS));
         setTheoryContainer.setBackground(panelBackgroundColor);
+        setTheoryContainer.setBorder(new EmptyBorder(0, 10, 0, 10));
 
         firstInputTitle = new JLabel("Enter first set");
         firstInputTitle.setFont(mainFont);
         firstInputTitle.setBackground(panelBackgroundColor);
         firstInputTitle.setForeground(textColor);
-        firstInputTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
+        firstInputTitle.setPreferredSize(new Dimension(480, 40));
+        firstInputTitle.setMaximumSize(firstInputTitle.getPreferredSize());
+        firstInputTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         secondInputTitle = new JLabel("Enter Second Set");
         secondInputTitle.setFont(mainFont);
         secondInputTitle.setBackground(panelBackgroundColor);
         secondInputTitle.setForeground(textColor);
+        secondInputTitle.setPreferredSize(new Dimension(480, 40));
+        secondInputTitle.setMaximumSize(secondInputTitle.getPreferredSize());
+        secondInputTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         firstInput = new JTextField("");
         firstInput.setFont(mainFont);
         firstInput.setBackground(displayColor);
         firstInput.setForeground(textColor);
+        firstInput.setPreferredSize(new Dimension(480, 40));
+        firstInput.setMaximumSize(firstInput.getPreferredSize());
         secondInput = new JTextField("");
         secondInput.setFont(mainFont);
         secondInput.setBackground(displayColor);
         secondInput.setForeground(textColor);
+        secondInput.setPreferredSize(new Dimension(480, 40));
+        secondInput.setMaximumSize(firstInput.getPreferredSize());
 
         chooseTheoryTitle = new JLabel("Choose Theory");
         chooseTheoryTitle.setFont(mainFont);
         chooseTheoryTitle.setBackground(panelBackgroundColor);
         chooseTheoryTitle.setForeground(textColor);
+        chooseTheoryTitle.setPreferredSize(new Dimension(480, 40));
+        chooseTheoryTitle.setMaximumSize(chooseTheoryTitle.getPreferredSize());
+        chooseTheoryTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         String[] chooseTheoryField = {"union", "intersection", "difference"};
 
         chooseTheory = new JComboBox(chooseTheoryField);
+        chooseTheory.setFont(mainFont);
+        chooseTheory.setPreferredSize(new Dimension(480, 40));
+        chooseTheory.setMaximumSize(chooseTheory.getPreferredSize());
 
         setTheoryBtnContainer = new JPanel();
         setTheoryBtnContainer.setLayout(new BoxLayout(setTheoryBtnContainer, BoxLayout.LINE_AXIS));
         setTheoryBtnContainer.setBackground(panelBackgroundColor);
+        setTheoryBtnContainer.setPreferredSize(new Dimension(480, 40));
+        setTheoryBtnContainer.setMaximumSize(chooseTheory.getPreferredSize());
 
         runBtn = new JButton("= RUN");
         resetBtn = new JButton("x Reset");
@@ -85,12 +103,19 @@ public class SetTheoryLeftContainer extends JPanel {
         setTheoryBtnContainer.add(Box.createHorizontalGlue());
         setTheoryBtnContainer.add(resetBtn);
 
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 30)));
         setTheoryContainer.add(firstInputTitle);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 10)));
         setTheoryContainer.add(firstInput);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 25)));
         setTheoryContainer.add(secondInputTitle);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 10)));
         setTheoryContainer.add(secondInput);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 25)));
         setTheoryContainer.add(chooseTheoryTitle);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 10)));
         setTheoryContainer.add(chooseTheory);
+        setTheoryContainer.add(Box.createRigidArea(new Dimension(0, 25)));
         setTheoryContainer.add(setTheoryBtnContainer);
     }
 

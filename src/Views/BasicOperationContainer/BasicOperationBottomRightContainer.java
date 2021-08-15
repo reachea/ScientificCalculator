@@ -13,6 +13,9 @@ public class BasicOperationBottomRightContainer extends JPanel {
     protected Color textColor = new Color(228, 228, 228);
     protected Color displayColor = new Color(67, 82, 109);
 
+    // Font
+    Font mainFont = new Font("Montserrat", Font.PLAIN, 14);
+
     // Layouts
     protected JPanel basicOperationBottomRightContainer;
     protected JPanel topHalfContainer;
@@ -84,7 +87,9 @@ public class BasicOperationBottomRightContainer extends JPanel {
         String[] moneyExchangeField = {"Riel", "Dollar", "Euro", "Franc", "Pound", "Baht"};
 
         inputMoneyExchange = new JComboBox(moneyExchangeField);
+        inputMoneyExchange.setFont(mainFont);
         outputMoneyExchange = new JComboBox(moneyExchangeField);
+        outputMoneyExchange.setFont(mainFont);
         moneyExchangeInput = new JTextField();
         moneyExchangeInput.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, displayColor));
         moneyExchangeInput.setBackground(displayColor);
@@ -141,7 +146,9 @@ public class BasicOperationBottomRightContainer extends JPanel {
         String[] storageField = {"Byte", "Kilo Byte", "Mega Byte", "Giga Byte", "Tera Byte", "Peta Byte"};
 
         inputStorage = new JComboBox(storageField);
+        inputStorage.setFont(mainFont);
         outputStorage = new JComboBox(storageField);
+        outputStorage.setFont(mainFont);
         storageInput = new JTextField();
         storageInput.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, displayColor));
         storageInput.setBackground(displayColor);

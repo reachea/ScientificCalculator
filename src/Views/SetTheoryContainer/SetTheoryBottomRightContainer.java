@@ -19,7 +19,7 @@ public class SetTheoryBottomRightContainer extends JPanel {
     // Layouts
     JPanel setTheoryBottomRightContainer;
     JPanel topContainer;
-    JTextField setTheoryOutput;
+    JTextArea setTheoryOutput;
     JLabel topContainerTitle;
 
     public SetTheoryBottomRightContainer() {
@@ -47,12 +47,13 @@ public class SetTheoryBottomRightContainer extends JPanel {
         topContainer.add(Box.createRigidArea(new Dimension(10, 0)));
         topContainer.add(topContainerTitle);
 
-        setTheoryOutput = new JTextField("1");
+        setTheoryOutput = new JTextArea("1");
         setTheoryOutput.setBackground(screenBackgroundColor);
         setTheoryOutput.setFont(mainFont);
         setTheoryOutput.setForeground(textColor);
         setTheoryOutput.setEditable(false);
         setTheoryOutput.setBorder(BorderFactory.createMatteBorder(10, 20, 20, 20, screenBackgroundColor));
+
 
         setTheoryBottomRightContainer.add(topContainer, BorderLayout.NORTH);
         setTheoryBottomRightContainer.add(setTheoryOutput, BorderLayout.CENTER);

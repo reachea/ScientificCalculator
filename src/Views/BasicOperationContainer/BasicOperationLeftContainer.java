@@ -15,6 +15,9 @@ public class BasicOperationLeftContainer extends JPanel {
     protected Color textColor = new Color(228, 228, 228);
     protected Color displayColor = new Color(67, 82, 109);
 
+    // Font
+    Font mainFont = new Font("Montserrat", Font.PLAIN, 14);
+
     // Layouts
     protected JPanel buttonContainer;
 
@@ -79,6 +82,9 @@ public class BasicOperationLeftContainer extends JPanel {
 
         createGridButtons();
         lowerContainer.add(buttonContainer, BorderLayout.CENTER);
+
+        lowerContainer.setBorder(new EmptyBorder(20, 10, 40, 10));
+        lowerContainer.setBackground(panelBackgroundColor);
     }
 
     public void createGridButtons() {
@@ -93,10 +99,12 @@ public class BasicOperationLeftContainer extends JPanel {
         String[] trigonometryItems = {"Trigonometry", "sin", "sind", "cos", "cosd", "tan", "tand"};
 
         trigonometryFunction = new JComboBox(trigonometryItems);
+        trigonometryFunction.setFont(mainFont);
 
         String[] bitwiseItems = {"Bitwise", "and", "or", "xor", "left shift", "right shift", "bit inversion"};
 
         bitwiseFunction = new JComboBox(bitwiseItems);
+        bitwiseFunction.setFont(mainFont);
 
         basicOperationFunctionality.add(trigonometryFunction);
         basicOperationFunctionality.add(bitwiseFunction);
@@ -202,7 +210,7 @@ public class BasicOperationLeftContainer extends JPanel {
 
         basicArithmeticResultContainer = new JPanel();
         basicArithmeticResultContainer.setLayout(new BoxLayout(basicArithmeticResultContainer, BoxLayout.PAGE_AXIS));
-        basicArithmeticResultContainer.setPreferredSize(new Dimension(392, 158));
+        basicArithmeticResultContainer.setPreferredSize(new Dimension(372, 158));
         basicArithmeticResultContainer.setBackground(new Color(67, 82, 109));
 
         basicArithmeticOperation = new JTextField(10);
