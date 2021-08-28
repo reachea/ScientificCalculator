@@ -7,59 +7,6 @@ public class BinaryArithmetic extends NumberSystem {
 
 
     /**
-     * Nested class for binary complement
-     */
-    public class BinaryComplement {
-
-        /**
-         * @param binary the argument for binary input
-         * @return the result after convert binary to first complement
-         */
-        public long findFirstComplement(long binary) {
-            // init complement binary variable
-            long co_binary = 0;
-
-            // create binaryArithmetic object
-            BinaryArithmetic binaryArithmetic = new BinaryArithmetic();
-
-            // Using recursion logic to get the amount of index
-            int cnt = binaryArithmetic.getLoopNumber(binary, 0);
-
-            // Logic to the first complement binary
-            long remainder = binary;
-            long mod;
-            for (int i = 0; i < cnt; i++) {
-                mod = remainder % 10;
-                remainder = remainder / 10;
-
-                if (mod == 0) {
-                    co_binary = co_binary + binaryArithmetic.pow(10, i);
-                }
-            }
-
-            // Return first complement binary
-            return co_binary;
-        }
-
-
-        /**
-         * @param binary the argument for binary input
-         * @return the result from second complement conversion
-         */
-        public long secondComplement(long binary) {
-            // convert binary to first complement
-            long firstComplement = findFirstComplement(binary);
-
-            // getting second complement
-            long ans = binaryAdd(firstComplement, 1);
-
-            // return second complement number
-            return ans;
-        }
-    }
-
-
-    /**
      * @param first_binary  the argument for the first binary input
      * @param second_binary the argument for the second binary input
      * @return the result from adding both binary input
@@ -69,8 +16,8 @@ public class BinaryArithmetic extends NumberSystem {
         long ans = 0;
 
         // Using recursion logic to get the amount of index in both binary input
-        int cnt1 = getLoopNumber(first_binary, 0);
-        int cnt2 = getLoopNumber(second_binary, 0);
+        int cnt1 = getLoopNumber(first_binary, 10);
+        int cnt2 = getLoopNumber(second_binary, 10);
 
         // init necessary variables
         long remainder1 = first_binary;
@@ -151,7 +98,7 @@ public class BinaryArithmetic extends NumberSystem {
      * @return the result from subtraction of first binary input and second binary input
      */
     public String subtractWith2ndComplement(long first_binary, long second_binary) {
-        BinaryArithmetic.BinaryComplement binaryComplement = new BinaryArithmetic.BinaryComplement();
+        BinaryComplement binaryComplement = new BinaryComplement(this);
 
         long second_combinary = binaryComplement.secondComplement(second_binary);
 
@@ -163,8 +110,8 @@ public class BinaryArithmetic extends NumberSystem {
         // Since Long doesn't support 32digits of length we are going to use string as replacement
         String ansNeg = "11111111111111111111111111111111";
 
-        long cnt1 = getLoopNumber(first_binary, 0);
-        long cnt2 = getLoopNumber(second_binary, 0);
+        long cnt1 = getLoopNumber(first_binary, 10);
+        long cnt2 = getLoopNumber(second_binary, 10);
 
         if (cnt1 > cnt2) {
 
@@ -199,8 +146,8 @@ public class BinaryArithmetic extends NumberSystem {
         long ans = 0;
 
         // Using recursion logic to get amount of index in both binary input
-        int cnt1 = getLoopNumber(first_binary, 0);
-        int cnt2 = getLoopNumber(second_binary, 0);
+        int cnt1 = getLoopNumber(first_binary, 10);
+        int cnt2 = getLoopNumber(second_binary, 10);
 
         // init necessary variable
         long remainder1 = first_binary;
@@ -291,8 +238,8 @@ public class BinaryArithmetic extends NumberSystem {
      */
     public long binaryMultiple(long first_binary, long second_binary) {
         int cnt = 0;
-        long cnt1 = getLoopNumber(first_binary, 0);
-        long cnt2 = getLoopNumber(second_binary, 0);
+        long cnt1 = getLoopNumber(first_binary, 10);
+        long cnt2 = getLoopNumber(second_binary, 10);
 
         long remainder1;
         long remainder2 = second_binary;
@@ -340,7 +287,7 @@ public class BinaryArithmetic extends NumberSystem {
         long quotient = 0;
         long remainder = 0;
         long temp;
-        int cnt = getLoopNumber(first_binary, 0);
+        int cnt = getLoopNumber(first_binary, 10);
         int loop = cnt - 1;
 
         if (second_binary > first_binary) {

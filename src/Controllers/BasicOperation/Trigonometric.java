@@ -10,7 +10,7 @@ public class Trigonometric {
      * @param radian the argument for sin function
      * @return the result from sin function
      */
-    public double sin(float radian) {
+    public double sin(double radian) {
         return Math.sin(radian);
     }
 
@@ -19,7 +19,7 @@ public class Trigonometric {
      * @param degree the argument for sin function
      * @return the result from sin function
      */
-    public double sind(int degree) {
+    public double sind(double degree) {
         double b = Math.toRadians(degree);
         return Math.sin(b);
     }
@@ -29,7 +29,7 @@ public class Trigonometric {
      * @param radian the argument for cos function
      * @return the result from cos function
      */
-    public double cos(float radian) {
+    public double cos(double radian) {
         return Math.cos(radian);
     }
 
@@ -38,7 +38,7 @@ public class Trigonometric {
      * @param degree the argument for cos function
      * @return the result from cos function
      */
-    public double cosd(int degree) {
+    public double cosd(double degree) {
         double b = Math.toRadians(degree);
         return Math.cos(b);
     }
@@ -48,7 +48,7 @@ public class Trigonometric {
      * @param radian the argument for tan function
      * @return the result from tan function
      */
-    public double tan(float radian) {
+    public double tan(double radian) {
         return Math.tan(radian);
     }
 
@@ -57,7 +57,7 @@ public class Trigonometric {
      * @param degree the argument for tan function
      * @return the result from tan function
      */
-    public double tand(int degree) {
+    public double tand(double degree) {
         double b = Math.toRadians(degree);
         return Math.tan(b);
     }

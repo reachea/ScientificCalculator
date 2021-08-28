@@ -3,7 +3,10 @@ package Views.BasicOperationContainer;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 // Class for basic operation bottom right view
 public class BasicOperationBottomRightContainer extends JPanel {
@@ -22,6 +25,8 @@ public class BasicOperationBottomRightContainer extends JPanel {
     protected JPanel bottomHalfContainer;
 
     // Components
+    public int isStorageRemove = 0;
+    public int isMoneyRemove = 0;
     protected JLabel topHalfTitle;
     protected JLabel bottomHalfTitle;
 
@@ -32,16 +37,16 @@ public class BasicOperationBottomRightContainer extends JPanel {
     protected JPanel bottomHalfFirstRow;
     protected JPanel bottomHalfSecondRow;
 
-    protected JComboBox inputMoneyExchange;
-    protected JTextField moneyExchangeInput;
-    protected JComboBox outputMoneyExchange;
-    protected JTextField moneyExchangeOutput;
+    public JComboBox inputMoneyExchange;
+    public JTextField moneyExchangeInput;
+    public JComboBox outputMoneyExchange;
+    public JTextField moneyExchangeOutput;
     protected JButton moneyExchangeSwapButton;
 
-    protected JComboBox inputStorage;
-    protected JTextField storageInput;
-    protected JComboBox outputStorage;
-    protected JTextField storageOutput;
+    public JComboBox inputStorage;
+    public JTextField storageInput;
+    public JComboBox outputStorage;
+    public JTextField storageOutput;
     protected JButton storageSwapButton;
 
     public BasicOperationBottomRightContainer() {
@@ -85,8 +90,9 @@ public class BasicOperationBottomRightContainer extends JPanel {
         topHalfBody.add(topHalfSecondRow);
 
         String[] moneyExchangeField = {"Riel", "Dollar", "Euro", "Franc", "Pound", "Baht"};
+        String[] moneyExchangeInputField = {"Riel"};
 
-        inputMoneyExchange = new JComboBox(moneyExchangeField);
+        inputMoneyExchange = new JComboBox(moneyExchangeInputField);
         inputMoneyExchange.setFont(mainFont);
         outputMoneyExchange = new JComboBox(moneyExchangeField);
         outputMoneyExchange.setFont(mainFont);
@@ -100,7 +106,6 @@ public class BasicOperationBottomRightContainer extends JPanel {
         moneyExchangeOutput.setBackground(displayColor);
         moneyExchangeOutput.setFont(new Font("Montserrat", Font.PLAIN, 14));
         moneyExchangeOutput.setForeground(textColor);
-        moneyExchangeOutput.setEditable(false);
 
         moneyExchangeSwapButton = new JButton("<>");
         topHalfFirstRow.add(inputMoneyExchange);
@@ -177,5 +182,17 @@ public class BasicOperationBottomRightContainer extends JPanel {
         // adding to container
         basicOperationBottomRightContainer.add(topHalfContainer);
         basicOperationBottomRightContainer.add(bottomHalfContainer);
+    }
+
+    public void addMoneyExchangeInputHandler(KeyListener _moneyExchangeInputHandler) {
+        moneyExchangeInput.addKeyListener(_moneyExchangeInputHandler);
+    }
+
+    public void addMoneyExchangeOutputHandler(KeyListener _moneyExchangeOutputHandler) {
+        moneyExchangeOutput.addKeyListener(_moneyExchangeOutputHandler);
+    }
+
+    public void addStorageConverterHandler(KeyListener _addStorageConverterHandler) {
+        storageInput.addKeyListener(_addStorageConverterHandler);
     }
 }

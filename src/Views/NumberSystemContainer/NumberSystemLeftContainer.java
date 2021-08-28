@@ -1,5 +1,7 @@
 package Views.NumberSystemContainer;
 
+import Controllers.NumberSystemHandlers.NumberSystemConverterHandler;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -21,17 +23,17 @@ public class NumberSystemLeftContainer extends JPanel {
 
     // Components
     JLabel numberSystemTitle;
-    JTextField numberSystemInput;
+    public JTextField numberSystemInput;
     JLabel numberSystemInputTitle;
-    JComboBox numberSystemFrom;
-    JComboBox numberSystemTo;
+    public JComboBox numberSystemFrom;
+    public JComboBox numberSystemTo;
     JLabel numberSystemFromTitle;
     JLabel numberSystemToTitle;
     JButton numberSystemConvertBtn;
     JButton numberSystemResetBtn;
     JButton numberSystemSwapBtn;
     JLabel numberSystemResult;
-    JTextArea numberSystemOutput;
+    public JTextArea numberSystemOutput;
 
     public NumberSystemLeftContainer() {
         this.setLayout(new BorderLayout());
@@ -142,5 +144,9 @@ public class NumberSystemLeftContainer extends JPanel {
         numberSystemTitle.setForeground(textColor);
         numberSystemTitle.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), numberSystemTitle.getBorder()));
         numberSystemTitle.setOpaque(true);
+    }
+
+    public void addNumberSystemConverterHandler(NumberSystemConverterHandler _numberSystemConverterHandler) {
+        numberSystemConvertBtn.addActionListener(_numberSystemConverterHandler);
     }
 }

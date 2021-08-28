@@ -1,4 +1,4 @@
-package Controllers.BasicArithmeticButtons;
+package Controllers.BasicArithmeticHandlers;
 
 import Controllers.BasicOperation.Arithmetic;
 import Views.BasicOperationContainer.BasicOperationLeftContainer;

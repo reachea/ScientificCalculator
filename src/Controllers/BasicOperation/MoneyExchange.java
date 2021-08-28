@@ -15,8 +15,8 @@ public class MoneyExchange {
      * @param a the argument for amount of Riel
      * @return the result from Riel to Dollar conversion
      */
-    public double rielToDollar(int a) {
-        return (double) a/dollar;
+    public double rielToDollar(double a) {
+        return a/dollar;
     }
 
     /**
@@ -24,8 +24,8 @@ public class MoneyExchange {
      * @param a the argument for amount of Riel
      * @return the result from Riel to Euro conversion
      */
-    public double rielToEuro(int a) {
-        return (double) a/euro;
+    public double rielToEuro(double a) {
+        return a/euro;
     }
 
     /**
@@ -33,8 +33,8 @@ public class MoneyExchange {
      * @param a the argument for amount of Riel
      * @return the result from Riel to Franc conversion
      */
-    public double rielToFranc(int a) {
-        return (double) a/franc;
+    public double rielToFranc(double a) {
+        return a/franc;
     }
 
     /**
@@ -42,8 +42,8 @@ public class MoneyExchange {
      * @param a the argument for amount of Riel
      * @return the result from Riel to Pound conversion
      */
-    public double rielToPound(int a) {
-        return (double) a/pound;
+    public double rielToPound(double a) {
+        return a/pound;
     }
 
     /**
@@ -51,8 +51,8 @@ public class MoneyExchange {
      * @param a the argument for amount of Riel
      * @return the result from Riel to Baht conversion
      */
-    public double rielToBaht(int a) {
-        return (double) a/baht;
+    public double rielToBaht(double a) {
+        return a/baht;
     }
 
     /**
@@ -60,7 +60,7 @@ public class MoneyExchange {
      * @param a the argument for amount of Dollar
      * @return the result from Dollar to Riel conversion
      */
-    public double dollarToRiel(int a) {
+    public double dollarToRiel(double a) {
         return a*dollar;
     }
 
@@ -69,7 +69,7 @@ public class MoneyExchange {
      * @param a the argument for amount of Euro
      * @return the result from Euro to Riel conversion
      */
-    public double euroToRiel(int a) {
+    public double euroToRiel(double a) {
         return a*euro;
     }
 
@@ -78,7 +78,7 @@ public class MoneyExchange {
      * @param a the argument for amount of Franc
      * @return the result from Franc to Riel conversion
      */
-    public double francToRiel(int a) {
+    public double francToRiel(double a) {
         return a*franc;
     };
 
@@ -87,7 +87,7 @@ public class MoneyExchange {
      * @param a the argument for amount of Pound
      * @return the result from Pound to Riel conversion
      */
-    public double poundToRiel(int a) {
+    public double poundToRiel(double a) {
         return a*pound;
     }
 
@@ -96,7 +96,7 @@ public class MoneyExchange {
      * @param a the argument for amount of Baht
      * @return the result from Baht to Riel conversion
      */
-    public double bahtToRiel(int a) {
+    public double bahtToRiel(double a) {
         return a*baht;
     }
 }

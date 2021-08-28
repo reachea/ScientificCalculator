@@ -2,6 +2,7 @@ package Views.NumberSystemContainer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class NumberSystemBottomRightContainer extends JPanel {
     // Frequently used Color
@@ -26,9 +27,9 @@ public class NumberSystemBottomRightContainer extends JPanel {
     protected JPanel topHalfSecondRow;
     protected JLabel topHalfTitle;
     protected JTextField firstInputTitle;
-    protected JTextField firstInput;
+    public JTextField firstInput;
     protected JTextField secondInputTitle;
-    protected JTextField secondInput;
+    public JTextField secondInput;
     protected JButton binaryClearBtn;
 
     protected JPanel binaryBtnContainer;
@@ -37,7 +38,7 @@ public class NumberSystemBottomRightContainer extends JPanel {
     protected JButton binaryMultipleBtn;
     protected JButton binaryDivideBtn;
     protected JButton binaryFirstComplementBtn;
-    protected JTextField binaryOutput;
+    public JTextField binaryOutput;
 
     public NumberSystemBottomRightContainer() {
         createLayout();
@@ -102,7 +103,6 @@ public class NumberSystemBottomRightContainer extends JPanel {
         secondInput.setBackground(screenBackgroundColor);
         secondInput.setFont(mainFont);
         secondInput.setForeground(textColor);
-        secondInput.setEditable(false);
         secondInput.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, screenBackgroundColor));
         topHalfSecondRow.add(firstInput);
         topHalfSecondRow.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -157,5 +157,25 @@ public class NumberSystemBottomRightContainer extends JPanel {
 
         numberSystemRightContainer.add(topHalfContainer, BorderLayout.NORTH);
         numberSystemRightContainer.add(bottomHalfContainer, BorderLayout.CENTER);
+    }
+
+    public void addBinaryArithmeticSumHandler(ActionListener _binaryArithmeticSumHandler) {
+        binarySumBtn.addActionListener(_binaryArithmeticSumHandler);
+    }
+
+    public void addBinaryArithmeticMinusHandler(ActionListener _binaryArithmeticMinusHandler) {
+        binaryMinusBtn.addActionListener(_binaryArithmeticMinusHandler);
+    }
+
+    public void addBinaryArithmeticMultipleHandler(ActionListener _binaryArithmeticMultipleHandler) {
+        binaryMultipleBtn.addActionListener(_binaryArithmeticMultipleHandler);
+    }
+
+    public void addBinaryArithmeticDivisionHandler(ActionListener _binaryArithmeticDivisionHandler) {
+        binaryDivideBtn.addActionListener(_binaryArithmeticDivisionHandler);
+    }
+
+    public void addBinaryArithmeticComplementHandler(ActionListener _binaryArithmeticComplementHandler) {
+        binaryFirstComplementBtn.addActionListener(_binaryArithmeticComplementHandler);
     }
 }

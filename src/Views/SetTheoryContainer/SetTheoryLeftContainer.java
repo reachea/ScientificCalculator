@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class SetTheoryLeftContainer extends JPanel {
     // Frequently used Color
@@ -22,11 +23,11 @@ public class SetTheoryLeftContainer extends JPanel {
     // Components
     JLabel setTheoryTitle;
     JLabel firstInputTitle;
-    JTextField firstInput;
+    public JTextField firstInput;
     JLabel secondInputTitle;
-    JTextField secondInput;
+    public JTextField secondInput;
     JLabel chooseTheoryTitle;
-    JComboBox chooseTheory;
+    public JComboBox chooseTheory;
     JButton runBtn;
     JButton resetBtn;
 
@@ -127,5 +128,9 @@ public class SetTheoryLeftContainer extends JPanel {
         setTheoryTitle.setForeground(textColor);
         setTheoryTitle.setBorder(new CompoundBorder(new EmptyBorder(0, 0, 5, 0), setTheoryTitle.getBorder()));
         setTheoryTitle.setOpaque(true);
+    }
+
+    public void addSetRunHandler(ActionListener _setRunHandler) {
+        runBtn.addActionListener(_setRunHandler);
     }
 }

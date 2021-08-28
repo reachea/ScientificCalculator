@@ -4,7 +4,7 @@ package Controllers.SetTheory;
  * Class for set difference operation
  */
 public class SetDifference implements SetHelper {
-    private String result;
+    private String result = "";
 
     @Override
     public String setOperation(String firstSet, String secondSet) {
@@ -38,6 +38,19 @@ public class SetDifference implements SetHelper {
             }
         }
 
-        return this.result;
+        // Output
+
+        String display_out = "{ ";
+
+        for (int i = 0; i < result.length(); i++) {
+            if (i == result.length() - 1) {
+                display_out = display_out + result.charAt(i) + " }";
+                break;
+            }
+
+            display_out = display_out + result.charAt(i) + ", ";
+        }
+
+        return  display_out;
     }
 }

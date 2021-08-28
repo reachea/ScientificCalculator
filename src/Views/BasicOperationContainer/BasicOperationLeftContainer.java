@@ -32,8 +32,8 @@ public class BasicOperationLeftContainer extends JPanel {
 
     /* buttons */
     // functionality
-    protected JComboBox trigonometryFunction;
-    protected JComboBox bitwiseFunction;
+    public JComboBox trigonometryFunction;
+    public JComboBox bitwiseFunction;
 
     // main buttons
     // 1st row
@@ -96,12 +96,12 @@ public class BasicOperationLeftContainer extends JPanel {
         basicOperationFunctionality.setLayout(new GridLayout(1, 2, 8, 8));
         basicOperationFunctionality.setBackground(panelBackgroundColor);
 
-        String[] trigonometryItems = {"Trigonometry", "sin", "sind", "cos", "cosd", "tan", "tand"};
+        String[] trigonometryItems = {"sin", "sind", "cos", "cosd", "tan", "tand"};
 
         trigonometryFunction = new JComboBox(trigonometryItems);
         trigonometryFunction.setFont(mainFont);
 
-        String[] bitwiseItems = {"Bitwise", "and", "or", "xor", "left shift", "right shift", "bit inversion"};
+        String[] bitwiseItems = {"and", "or", "xor", "left shift", "right shift", "bit inversion"};
 
         bitwiseFunction = new JComboBox(bitwiseItems);
         bitwiseFunction.setFont(mainFont);
@@ -183,6 +183,7 @@ public class BasicOperationLeftContainer extends JPanel {
 
         // 5th row
         signButton.setText("+/-");
+        signButton.addActionListener(new signBtnHandler());
         mainButtons.add(signButton);
 
         zeroButton.setText("0");
@@ -572,6 +573,31 @@ public class BasicOperationLeftContainer extends JPanel {
         }
     }
 
+    class signBtnHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String oldResult = basicArithmeticResult.getText();
+
+            if (inputLengthRestriction(oldResult)) {
+                return;
+            }
+
+            if (oldResult.equals("0")) {
+                return;
+            }
+
+            if (oldResult.charAt(0) == '-') {
+                oldResult = oldResult.substring(1);
+            } else {
+                oldResult = "-" + oldResult;
+            }
+
+            basicArithmeticResultHolder = oldResult;
+            basicArithmeticResult.setText(basicArithmeticResultHolder);
+        }
+    }
+
     public void addMinusBtnHandler(ActionListener minusBtnHandler) { minusButton.addActionListener(minusBtnHandler); }
 
     public void addPlusButtonHandler(ActionListener plusBtnHandler) {
@@ -588,6 +614,18 @@ public class BasicOperationLeftContainer extends JPanel {
 
     public void addDivideButtonHandler(ActionListener divideBtnHandler) {
         divideButton.addActionListener(divideBtnHandler);
+    }
+
+    public void addSquareButtonHandler(ActionListener squareBtnHandler) {
+        squareButton.addActionListener(squareBtnHandler);
+    }
+
+    public void addTrigonometricFunctionHandler(ActionListener _trigonometricFunction) {
+        trigonometryFunction.addActionListener(_trigonometricFunction);
+    }
+
+    public void addBitwiseFunction(ActionListener _bitwiseFunction) {
+        bitwiseFunction.addActionListener(_bitwiseFunction);
     }
 
 
